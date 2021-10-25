@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="941e9cc4-bef7-4683-9fcd-27f0f7994373" name="Default Changelist" comment="validation for email using email-validator and Jinja control flow statement in register.html template">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="941e9cc4-bef7-4683-9fcd-27f0f7994373" name="Default Changelist" comment="Validation for lenght of the password using Jinja control flow statement in register.html and defined parameter stating the min and max number of characters">
       <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/users/forms.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -260,7 +259,7 @@
       <workItem from="1633611461819" duration="20000" />
       <workItem from="1635119653760" duration="353000" />
       <workItem from="1635120387151" duration="2077000" />
-      <workItem from="1635184683566" duration="5682000" />
+      <workItem from="1635184683566" duration="5981000" />
     </task>
     <task id="LOCAL-00001" summary="just an initial commit to git">
       <created>1635190938832</created>
@@ -283,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635192312455</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Validation for lenght of the password using Jinja control flow statement in register.html and defined parameter stating the min and max number of characters">
+      <created>1635197951938</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1635197951938</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,10 +299,11 @@
     <MESSAGE value="just an initial commit to git" />
     <MESSAGE value="all forms fields must be filled" />
     <MESSAGE value="validation for email using email-validator and Jinja control flow statement in register.html template" />
-    <option name="LAST_COMMIT_MESSAGE" value="validation for email using email-validator and Jinja control flow statement in register.html template" />
+    <MESSAGE value="Validation for lenght of the password using Jinja control flow statement in register.html and defined parameter stating the min and max number of characters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validation for lenght of the password using Jinja control flow statement in register.html and defined parameter stating the min and max number of characters" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LotteryWebApp$app.coverage" NAME="app Coverage Results" MODIFIED="1635192204897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LotteryWebAppFiles" />
+    <SUITE FILE_PATH="coverage/LotteryWebApp$app.coverage" NAME="app Coverage Results" MODIFIED="1635197824336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LotteryWebAppFiles" />
     <SUITE FILE_PATH="coverage/LotteryWebApp$LotteryWebApp.coverage" NAME="LotteryWebApp Coverage Results" MODIFIED="1635119792881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
