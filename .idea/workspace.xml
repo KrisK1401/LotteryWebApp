@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="941e9cc4-bef7-4683-9fcd-27f0f7994373" name="Default Changelist" comment="Error Handling for 400/403/404/500/503 with appropriate status description">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/models.py" afterDir="false" />
+    <list default="true" id="941e9cc4-bef7-4683-9fcd-27f0f7994373" name="Default Changelist" comment="password pattern matching, set the password as needing to have at least 1 digit, 1 uppercase letter,1 lowercase letter, and 1 special character">
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/lottery.db" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/lottery.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/400.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/403.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/503.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/users/forms.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +331,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Error Handling for 400/403/404/500/503 with appropriate status description" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LotteryWebApp$app.coverage" NAME="app Coverage Results" MODIFIED="1635334370205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LotteryWebAppFiles" />
+    <SUITE FILE_PATH="coverage/LotteryWebApp$app.coverage" NAME="app Coverage Results" MODIFIED="1635438230661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LotteryWebAppFiles" />
     <SUITE FILE_PATH="coverage/LotteryWebApp$LotteryWebApp.coverage" NAME="LotteryWebApp Coverage Results" MODIFIED="1635119792881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

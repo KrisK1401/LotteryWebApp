@@ -19,7 +19,7 @@ class RegisterForm(FlaskForm):
     phone = StringField(validators=[Required()])
     password = PasswordField(validators=[Required(), Length(min=6, max=12, message='Password must be between 6 and 12 characters in length.')])
     confirm_password = PasswordField(validators=[Required()])
-    pin_key = StringField(validators=[Required()])
+    pin_key = StringField(validators=[Required(), Length(32, message='PIN Key must be 32 characters in length')])
     submit = SubmitField()
 
     def validate_password(self, password):
