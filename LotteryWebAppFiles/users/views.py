@@ -3,7 +3,7 @@ import logging
 from functools import wraps
 from werkzeug.security import check_password_hash
 from flask import Flask, Blueprint, render_template, flash, redirect, url_for, request, session
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 from app import db
 from models import User
 from users.forms import RegisterForm, LoginForm
@@ -104,18 +104,24 @@ def login():
     return render_template('login.html', form=form)
 
 @users_blueprint.route('/logout')
+@login_required
+
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 # view user profile
 @users_blueprint.route('/profile')
+@login_required
+
 def profile():
     return render_template('profile.html', name="PLACEHOLDER FOR FIRSTNAME")
 
 
 # view user account
 @users_blueprint.route('/account')
+@login_required
+
 def account():
     return render_template('account.html',
                            acc_no="PLACEHOLDER FOR USER ID",
