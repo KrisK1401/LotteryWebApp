@@ -11,6 +11,10 @@ def character_check(form,field):
             raise ValidationError(
                 f"Character {char} is not allowed.")
 
+class LoginForm(FlaskForm):
+    username = StringField(validators=[Required(), Email()])
+    password = PasswordField(validators=[Required()])
+    submit = SubmitField()
 
 class RegisterForm(FlaskForm):
     email = StringField(validators=[Required(), Email()])
