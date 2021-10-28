@@ -1,8 +1,19 @@
+import base64
 from datetime import datetime
+from Crypto.Protocol.KDF import scrypt
+from Crypto.Random import get_random_bytes
+from cryptography.fernet import Fernet
+from flask_login import LoginManager, UserMixin
 from werkzeug.security import generate_password_hash
-from flask_login import UserMixin
-from app import db
+from app import db, app
 
+
+def encrypt(data, draw_key):
+    return Fernet(draw_key).encrypt(bytes(data, 'utf-8'))
+
+
+def decrypt(data, draw_key):
+    return Fernet(draw_key).decrypt(data).decode("utf-8")
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -27,6 +38,7 @@ class User(db.Model, UserMixin):
 
     # crypto key for user's lottery draws
     draw_key = db.Column(db.BLOB)
+    pin_key = db.Column(db.String(100), nullable=False)
 
     # Define the relationship to Draw
     draws = db.relationship('Draw')

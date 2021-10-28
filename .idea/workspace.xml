@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="941e9cc4-bef7-4683-9fcd-27f0f7994373" name="Default Changelist" comment="PIN Key length added as well as Error Handling Forms">
+    <list default="true" id="941e9cc4-bef7-4683-9fcd-27f0f7994373" name="Default Changelist" comment="login form added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/lottery.db" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/lottery.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/users/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LotteryWebAppFiles/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/LotteryWebAppFiles/users/views.py" afterDir="false" />
     </list>
@@ -305,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635204327540</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="login form added">
+      <created>1635443491865</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1635443491865</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,10 +337,11 @@
     <MESSAGE value="validation for email using email-validator and Jinja control flow statement in register.html template" />
     <MESSAGE value="password pattern matching, set the password as needing to have at least 1 digit, 1 uppercase letter,1 lowercase letter, and 1 special character" />
     <MESSAGE value="Error Handling for 400/403/404/500/503 with appropriate status description" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error Handling for 400/403/404/500/503 with appropriate status description" />
+    <MESSAGE value="login form added" />
+    <option name="LAST_COMMIT_MESSAGE" value="login form added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LotteryWebApp$app.coverage" NAME="app Coverage Results" MODIFIED="1635443304370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LotteryWebAppFiles" />
+    <SUITE FILE_PATH="coverage/LotteryWebApp$app.coverage" NAME="app Coverage Results" MODIFIED="1635450767336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LotteryWebAppFiles" />
     <SUITE FILE_PATH="coverage/LotteryWebApp$LotteryWebApp.coverage" NAME="LotteryWebApp Coverage Results" MODIFIED="1635119792881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
