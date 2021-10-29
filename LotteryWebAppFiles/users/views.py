@@ -10,6 +10,7 @@ from users.forms import RegisterForm, LoginForm
 from users.forms import LoginForm
 from datetime import datetime
 import pyotp
+from app import requires_roles
 
 # CONFIG
 users_blueprint = Blueprint('users', __name__, template_folder='templates')
@@ -101,9 +102,11 @@ def login():
 
             logging.warning('SECURITY - Log in [%s, %s, %s]', current_user.id, current_user.username, request.remote_addr)
 
-
-            return blog()
-
+            # direct to role appropriate page
+            if current_user.role == 'admin':
+                return redirect(url_for('admin.admin'))
+            else:
+                return redirect(url_for('user.user'))
         else:
             flash("You have entered a wrong 2FA token!", "danger")
 
@@ -123,6 +126,7 @@ def logout():
 # view user profile
 @users_blueprint.route('/profile')
 @login_required
+@requires_roles('user')
 
 def profile():
     return render_template('profile.html', name="PLACEHOLDER FOR FIRSTNAME")

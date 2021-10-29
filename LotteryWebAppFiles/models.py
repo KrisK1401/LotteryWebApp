@@ -24,6 +24,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     pin_key = db.Column(db.String(100), nullable=False)
+    role = db.Column(db.String(100), nullable=False)
 
     # User activity information
     registered_on = db.Column(db.DateTime, nullable=True)
