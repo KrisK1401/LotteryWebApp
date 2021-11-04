@@ -2,11 +2,14 @@
 from flask import Blueprint, render_template, request, flash
 from app import db
 from models import User, Draw
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app import requires_roles
-
+from cryptography.fernet import Fernet
 # CONFIG
 admin_blueprint = Blueprint('admin', __name__, template_folder='templates')
+
+def decrypt(data, draw_key):
+    return Fernet(draw_key).decrypt(data).decode('utf-8')
 
 
 # VIEWS
@@ -16,9 +19,7 @@ admin_blueprint = Blueprint('admin', __name__, template_folder='templates')
 @requires_roles('admin')
 
 def admin():
-
-    return render_template('admin.html', name="PLACEHOLDER FOR FIRSTNAME")
-
+    return render_template('admin.html', name=current_user.name)
 
 # view all registered users
 @admin_blueprint.route('/view_all_users', methods=['POST'])
@@ -26,7 +27,7 @@ def admin():
 @requires_roles('admin')
 
 def view_all_users():
-    return render_template('admin.html', name="PLACEHOLDER FOR FIRSTNAME",
+    return render_template('admin.html', name=current_user.name,
                            current_users=User.query.filter_by(role='user').all())
 
 
@@ -78,11 +79,12 @@ def view_winning_draw():
 
     # get winning draw from DB
     current_winning_draw = Draw.query.filter_by(win=True).first()
-
+    current_winning_draw_copy = current_winning_draw
+    current_winning_draw_copy.draw = decrypt(current_winning_draw_copy.draw, current_user.draw_key)
     # if a winning draw exists
     if current_winning_draw:
         # re-render admin page with current winning draw and lottery round
-        return render_template('admin.html', winning_draw=current_winning_draw, name="PLACEHOLDER FOR FIRSTNAME")
+        return render_template('admin.html', winning_draw=current_winning_draw, name=current_user.name)
 
     # if no winning draw exists, rerender admin page
     flash("No winning draw exists. Please add winning draw.")
@@ -144,7 +146,7 @@ def run_lottery():
             if len(results) == 0:
                 flash("No winners.")
 
-            return render_template('admin.html', results=results, name="PLACEHOLDER FOR FIRSTNAME")
+            return render_template('admin.html', results=results, name=current_user.name)
 
         flash("No user draws entered.")
         return admin()
@@ -164,4 +166,4 @@ def logs():
         content = f.read().splitlines()[-10:]
         content.reverse()
 
-    return render_template('admin.html', logs=content, name="PLACEHOLDER FOR FIRSTNAME")
+    return render_template('admin.html', logs=content, name=current_user.name)

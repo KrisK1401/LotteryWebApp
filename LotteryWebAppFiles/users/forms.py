@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
-from wtforms.validators import Required, Email, Length, ValidationError
+from wtforms.validators import Required, Email, Length, ValidationError, EqualTo
 import re
 
 
@@ -23,7 +23,7 @@ class RegisterForm(FlaskForm):
     lastname = StringField(validators=[Required()])
     phone = StringField(validators=[Required()])
     password = PasswordField(validators=[Required(), Length(min=6, max=12, message='Password must be between 6 and 12 characters in length.')])
-    confirm_password = PasswordField(validators=[Required()])
+    confirm_password = PasswordField(validators=[Required(),EqualTo('password', message="Confirm password does not match the initial password")])
     pin_key = StringField(validators=[Required(), character_check, Length(max=32, min=32, message="Length of PIN key must be 32.")])
     submit = SubmitField()
 
@@ -31,3 +31,7 @@ class RegisterForm(FlaskForm):
         p = re.compile(r'(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W)')
         if not p.match(self.password.data):
             raise ValidationError("Password must contain at least 1 digit, 1 upper case, 1 lower case, and 1 special character.")
+    def validate_phone(self, phone):
+        p = re.compile(r'\d\d\d\d-\d\d\d-\d\d\d\d')
+        if not p.match(self.phone.data):
+            raise ValidationError("Phone number is not in the right format, xxxx-xxx-xxxx")
