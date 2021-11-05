@@ -8,6 +8,8 @@ from cryptography.fernet import Fernet
 # CONFIG
 admin_blueprint = Blueprint('admin', __name__, template_folder='templates')
 
+
+#decryption of the draw using draw key function
 def decrypt(data, draw_key):
     return Fernet(draw_key).decrypt(data).decode('utf-8')
 
@@ -18,14 +20,14 @@ def decrypt(data, draw_key):
 @login_required
 @requires_roles('admin')
 
+
+# defining the function of an admin
 def admin():
     return render_template('admin.html', name=current_user.name)
-
 # view all registered users
 @admin_blueprint.route('/view_all_users', methods=['POST'])
 @login_required
 @requires_roles('admin')
-
 def view_all_users():
     return render_template('admin.html', name=current_user.name,
                            current_users=User.query.filter_by(role='user').all())

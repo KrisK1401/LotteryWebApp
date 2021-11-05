@@ -8,13 +8,17 @@ from werkzeug.security import generate_password_hash
 from app import db, app
 
 
+# encryption of the draws using Fernet
 def encrypt(data, draw_key):
     return Fernet(draw_key).encrypt(bytes(data, 'utf-8'))
 
 
+# decryption of the draws using Fernet
 def decrypt(data, draw_key):
     return Fernet(draw_key).decrypt(data).decode("utf-8")
 
+
+# main User class for database
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -58,6 +62,7 @@ class User(db.Model, UserMixin):
         self.current_logged_in = None
 
 
+# main Draw class for database
 class Draw(db.Model):
     __tablename__ = 'draws'
 
@@ -81,7 +86,7 @@ class Draw(db.Model):
         self.draw = decrypt(self.draw, draw_key)
 
 
-
+# initial (and in this case only) admin of the application
 def init_db():
     db.drop_all()
     db.create_all()
@@ -92,7 +97,6 @@ def init_db():
                  lastname='Jones',
                  phone='0191-123-4567',
                  role='admin')
-
     db.session.add(admin)
     db.session.commit()
 

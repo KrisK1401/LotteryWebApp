@@ -7,6 +7,7 @@ import logging
 from functools import wraps
 from flask_talisman import Talisman
 
+
 app = Flask(__name__)
 # SECURITY HEADERS
 talisman = Talisman()
@@ -24,11 +25,10 @@ talisman.init_app(app, content_security_policy=csp)
 db = SQLAlchemy()
 
 
-# LOGGING
+# class for loggin the records fo the application for security reasons
 class SecurityFilter(logging.Filter):
     def filter(self, record):
         return "SECURITY" in record.getMessage()
-
 
 fh = logging.FileHandler('LotteryWebApp.log', 'w')
 fh.setLevel(logging.WARNING)
@@ -41,14 +41,14 @@ logger.propagate = False
 logger.addHandler(fh)
 
 
-# CONFIG
+# configuration of database
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lottery.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'LongAndRandomSecretKey'
 
 
-# FUNCTIONS
+# function for roles in the applications using wrapper
 def requires_roles(*roles):
     def wrapper(f):
         @wraps(f)

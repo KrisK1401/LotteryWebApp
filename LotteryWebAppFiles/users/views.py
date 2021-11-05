@@ -12,6 +12,7 @@ from datetime import datetime
 import pyotp
 from app import requires_roles
 
+
 # CONFIG
 users_blueprint = Blueprint('users', __name__, template_folder='templates')
 
@@ -45,7 +46,6 @@ def register():
         # add the new user to the database
         db.session.add(new_user)
         db.session.commit()
-
         logging.warning('SECURITY - User registration [%s, %s]', form.username.data, request.remote_addr)
 
 
@@ -64,14 +64,12 @@ def login():
     # if login attempts is  more than 3, create an error message
     elif session.get('logins') > 3:
         flash('3 attempted used, login in no longer allowed.')
-
     form = LoginForm()
 
     if form.validate_on_submit():
 
         # increase login attempts by 1
         session['logins'] += 1
-
         user = User.query.filter_by(username=form.username.data).first()
 
         if not user or not check_password_hash(user.password, form.password.data):
@@ -91,8 +89,6 @@ def login():
         if pyotp.TOTP(user.pin_key).verify(form.pin.data):
 
             session['logins'] = 0
-
-
             login_user(user)
 
             user.last_logged_in = user.current_logged_in
@@ -112,22 +108,20 @@ def login():
 
     return render_template('login.html', form=form)
 
+
+# logout option for user
 @users_blueprint.route('/logout')
 @login_required
-
 def logout():
-
     logging.warning('SECURITY - Log out [%s, %s, %s]', current_user.id, current_user.username, request.remote_addr)
-
-
     logout_user()
     return redirect(url_for('index'))
+
 
 # view user profile
 @users_blueprint.route('/profile')
 @login_required
 @requires_roles('user')
-
 def profile():
     return render_template('profile.html', name=current_user.name)
 
@@ -135,7 +129,6 @@ def profile():
 # view user account
 @users_blueprint.route('/account')
 @login_required
-
 def account():
     return render_template('account.html',
                            acc_no=current_user.acc_no,

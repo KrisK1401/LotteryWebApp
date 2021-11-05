@@ -1,12 +1,11 @@
 # IMPORTS
 import logging
 from flask_login import login_required, current_user
-
 from flask import Blueprint, render_template, request, flash
 from app import requires_roles
-
 from app import db
-from models import Draw
+from models import Draw, User
+
 
 # CONFIG
 lottery_blueprint = Blueprint('lottery', __name__, template_folder='templates')
@@ -16,14 +15,13 @@ lottery_blueprint = Blueprint('lottery', __name__, template_folder='templates')
 # view lottery page
 @lottery_blueprint.route('/lottery')
 @requires_roles('user')
-
 def lottery():
     return render_template('lottery.html')
 
 
 @lottery_blueprint.route('/add_draw', methods=['POST'])
 @login_required
-@requires_roles('user')
+@requires_roles('user', 'admin')
 #decrypt all draws for users
 def decrypt_draws():
     all_draws = Draw.query.all()
@@ -36,8 +34,10 @@ def decrypt_draws():
         if d.user_id == current_user.id:
             d.view_draw(current_user.draw_key)
 
-    return decrypt_draw
+    return decrypt_draws
 
+
+# adding the draw
 def add_draw():
     submitted_draw = ''
     for i in range(6):
@@ -61,6 +61,8 @@ def add_draw():
 @login_required
 @requires_roles('user')
 
+
+# view the draw you submitted
 def view_draws():
     all_draws = decrypt_draws()
     # get all draws that have not been played [played=0]
